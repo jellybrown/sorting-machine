@@ -5,7 +5,9 @@ export const getStringByDate = (dateConstructor, locale) => {
   const day = dateConstructor.getDay();
 
   if (locale === 'ko') return `${year}년 ${month}월 ${date}일 ${DAY_KO[day]}`;
-  else return `${DAY_EN[day]} ${MONTH_EN[month]} ${date}, ${year}`;
+  else if (locale === 'en')
+    return `${DAY_EN[day]} ${MONTH_EN[month]} ${date}, ${year}`;
+  else throw Error(`locale 값은 'ko', 'en'만 가능합니다. 입력값 : ${locale}`);
 };
 
 const DAY_KO = [
