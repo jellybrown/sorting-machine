@@ -1,7 +1,7 @@
 import React from 'react';
 import { getStringByDate } from '../utils/getStringByDate';
 
-const Timer = ({ locale = 'ko' }) => {
+const Timer = ({ locale }) => {
   const today = getStringByDate(new Date(), locale);
 
   return <div>{today}</div>;

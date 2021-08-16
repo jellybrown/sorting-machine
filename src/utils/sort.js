@@ -43,5 +43,3 @@ export const quickDes = (arr) => {
 
   return quickDes(groupLeft).concat(pivot, quickDes(groupRight));
 };
-
-console.log(quickDes([17, 4, 88, 56, 66, 2, 6, 32, 19]));
