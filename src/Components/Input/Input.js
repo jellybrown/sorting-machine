@@ -43,34 +43,27 @@ const Input = () => {
     setValue(() => '');
   };
 
-  useEffect(() => {
-    console.log(bottomArray);
-  }, [bottomArray]);
-
   const onKeyDown = (e) => {
     if (e.key === 'Enter') onSubmit();
   };
 
   return (
     <>
-      <input value={value} onChange={(e) => setValue(e.target.value)} />
-      <button onClick={onSubmit}>확인</button>
-      <p>{errorMessage}</p>
+      <InputWrapper>
+        <TextInput
+          placeholder="정렬할 숫자들을 ,(콤마)로 구분해서 입력해주세요."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => onKeyDown(e)}
+        />
+        <Button onClick={onSubmit}>확인</Button>
+        <ErrorMessage>{errorMessage}</ErrorMessage>
+      </InputWrapper>
       <Container>
         <Cards data={topArray} what={'asc'}></Cards>
         <Cards data={bottomArray} what={'desc'}></Cards>
       </Container>
     </>
-    <InputWrapper>
-      <TextInput
-        placeholder="정렬할 숫자들을 ,(콤마)로 구분해서 입력해주세요."
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onKeyDown={(e) => onKeyDown(e)}
-      />
-      <Button onClick={onSubmit}>확인</Button>
-      <ErrorMessage>{errorMessage}</ErrorMessage>
-    </InputWrapper>
   );
 };
 
