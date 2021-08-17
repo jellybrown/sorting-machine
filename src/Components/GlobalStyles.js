@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
-// font-family: 'Nanum Gothic', sans-serif;
-
 const globalStyles = createGlobalStyle`
     ${reset};
     a{

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const InputWrapper = styled.div`
+export const ResultWrapper = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
@@ -50,4 +50,10 @@ export const ErrorMessage = styled.p`
   position: absolute;
   left: 4px;
   bottom: -25px;
+`;
+
+export const CardsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
