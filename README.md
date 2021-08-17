@@ -44,4 +44,4 @@
 
 ### 배포 주소.
 
-- https://goofy-hypatia-ab5dc8.netlify.app/
+- https://objective-mclean-1a198d.netlify.app/
