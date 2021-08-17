@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardsWrapper } from './Cards.style';
+import { Card, CardsWrapper, Title } from './Cards.style';
 
 const Cards = ({ data, what }) => {
   const ascColor = ['#ffeb3b', '#6CAE7A', '#1565c0', '#e57373'];
@@ -11,6 +11,7 @@ const Cards = ({ data, what }) => {
 
   return (
     <CardsWrapper>
+      <Title>{what === 'asc' ? '오름차순' : '내림차순'}</Title>
       {data.map((item, index) => (
         <Card
           key={index}
@@ -24,4 +25,4 @@ const Cards = ({ data, what }) => {
   );
 };
 
-export default Cards;
+export default React.memo(Cards);

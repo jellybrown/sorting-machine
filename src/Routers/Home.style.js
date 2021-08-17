@@ -8,8 +8,8 @@ export const HomeWrapper = styled.section`
   padding: 10px;
 `;
 export const TimeSection = styled.div`
-  height: 200px;
   position: relative;
+  flex: 1;
 `;
 
 export const CurrentTime = styled.div`

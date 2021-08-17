@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Cards from '../Components/Cards/Cards';
-import Input from '../Components/Input/Input';
-import Timer from '../Components/Timer/Timer';
+import { CurrentTime, Footer, HomeWrapper, TimeSection } from './Home.style';
 import Clock from 'react-clock';
 import 'react-clock/dist/Clock.css';
-import { CurrentTime, Footer, HomeWrapper, TimeSection } from './Home.style';
+import Timer from '../Components/Timer/Timer';
+import Result from '../Components/Result/Result';
 
 const Home = () => {
   const [clock, setClock] = useState(new Date());
@@ -29,9 +28,8 @@ const Home = () => {
             secondHandLength={75}
           />
         </CurrentTime>
-        <Input />
+        <Result />
       </TimeSection>
-      <Cards />
       <Footer>
         <Timer locale="en" />
       </Footer>
