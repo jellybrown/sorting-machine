@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { quickAsc, quickDes } from '../../utils/sort';
+import { Button, ErrorMessage, InputWrapper, TextInput } from './Input.style';
 
 const Input = () => {
   const [topArray, setTopArray] = useState([]);
@@ -10,7 +11,7 @@ const Input = () => {
   // return number[]
   const onSubmit = () => {
     if (value.split(',').length === 1)
-      return setErrorMessage('값은 ,(콤마)를 써서 2개 이상 입력하세요');
+      return setErrorMessage('값은 ,(콤마)를 써서 2개 이상 입력해주세요.');
 
     const numbers = value.split(',').map((char) => char.trim());
 
@@ -43,14 +44,21 @@ const Input = () => {
     console.log(bottomArray);
   }, [bottomArray]);
 
+  const onKeyDown = (e) => {
+    if (e.key === 'Enter') onSubmit();
+  };
+
   return (
-    <>
-      <input value={value} onChange={(e) => setValue(e.target.value)} />
-      <button onClick={onSubmit}>확인</button>
-      <p>{errorMessage}</p>
-      <card1></card1>
-      <card2></card2>
-    </>
+    <InputWrapper>
+      <TextInput
+        placeholder="정렬할 숫자들을 ,(콤마)로 구분해서 입력해주세요."
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => onKeyDown(e)}
+      />
+      <Button onClick={onSubmit}>확인</Button>
+      <ErrorMessage>{errorMessage}</ErrorMessage>
+    </InputWrapper>
   );
 };
 
