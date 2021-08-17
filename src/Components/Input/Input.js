@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import Cards from '../Cards/Cards';
 import { quickAsc, quickDes } from '../../utils/sort';
+import styled from 'styled-components';
 import { Button, ErrorMessage, InputWrapper, TextInput } from './Input.style';
 
 const Input = () => {
@@ -12,6 +14,9 @@ const Input = () => {
   const onSubmit = () => {
     if (value.split(',').length === 1)
       return setErrorMessage('값은 ,(콤마)를 써서 2개 이상 입력해주세요.');
+
+    setTopArray(() => []);
+    setBottomArray(() => []);
 
     const numbers = value.split(',').map((char) => char.trim());
 
@@ -33,35 +38,41 @@ const Input = () => {
       setBottomArray(() => {
         return quickDes([...newNumbers]);
       });
-    }, 3000);
-
-    console.log(topArray);
+    }, 2000);
 
     setValue(() => '');
   };
-
-  useEffect(() => {
-    console.log(bottomArray);
-  }, [bottomArray]);
 
   const onKeyDown = (e) => {
     if (e.key === 'Enter') onSubmit();
   };
 
   return (
-    <InputWrapper>
-      <TextInput
-        placeholder="정렬할 숫자들을 ,(콤마)로 구분해서 입력해주세요."
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onKeyDown={(e) => onKeyDown(e)}
-      />
-      <Button onClick={onSubmit}>확인</Button>
-      <ErrorMessage>{errorMessage}</ErrorMessage>
-    </InputWrapper>
+    <>
+      <InputWrapper>
+        <TextInput
+          placeholder="정렬할 숫자들을 ,(콤마)로 구분해서 입력해주세요."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => onKeyDown(e)}
+        />
+        <Button onClick={onSubmit}>확인</Button>
+        <ErrorMessage>{errorMessage}</ErrorMessage>
+      </InputWrapper>
+      <Container>
+        <Cards data={topArray} what={'asc'}></Cards>
+        <Cards data={bottomArray} what={'desc'}></Cards>
+      </Container>
+    </>
   );
 };
 
 export default Input;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const regex = /^\d+$/;
